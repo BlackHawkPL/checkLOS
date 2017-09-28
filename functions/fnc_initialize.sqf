@@ -30,13 +30,21 @@ call FUNC(determineEnvironment);
     if (count GVAR(markers) > 0) then {
         call FUNC(removeMarkers);
     };
-    if (GVAR(disableAfterStart)) then {
-        GVAR(getInput) = {hint STR_DISABLED;};
+    if (isMultiplayer && GVAR(disableAfterStart)) then {
+        call FUNC(disable);
     };
 }] call CBA_fnc_WaitUntilAndExecute;
 
 player createDiarySubject [QGVAR(menu), STR_DIARY_SUBJECT];
+private _info = "";
 
-_info = format [STR_DIARY_TEXT, QFUNC(getInput), QFUNC(removeMarkers), QFUNC(selectProfilePos), QFUNC(closeChart)];
-TEST = _info;
-player createDiaryRecord [QGVAR(menu), [STR_DIARY_RECORD_NAME, _info]];
+_info = STR_DIARY_USER_INSTR;
+player createDiaryRecord [QGVAR(menu), ["Instructions", _info]];
+
+_info = format [STR_DIARY_PROFILE, QFUNC(selectProfilePos), QFUNC(closeChart)];
+player createDiaryRecord [QGVAR(menu), ["Terrain Profile Tool", _info]];
+
+_info = format [STR_DIARY_LOS, QFUNC(getInput), QFUNC(removeMarkers)];
+player createDiaryRecord [QGVAR(menu), ["Check LOS Tool", _info]];
+
+diag_log "[checkLOS] Initialized";

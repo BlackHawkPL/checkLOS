@@ -13,8 +13,6 @@ GVAR(chartDrawn) = true;
 private _highest = -9000;
 private _lowest = 9000;
 
-GVAR(chartAccuracy) = 5;
-
 GVAR(elevationOffset) = getNumber (configFile >> "CfgWorlds" >> worldName >> "elevationOffset");
 
 GVAR(profileLength) = GVAR(profileStartPos) distance2D GVAR(profileEndPos);

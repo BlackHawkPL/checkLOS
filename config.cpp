@@ -21,7 +21,7 @@ class CfgMarkerColors
 {
     class BH_checkLOS_colorNotVisible
     {
-        color[] = {0.6,0.6,0.6,1};
+        color[] = {0.3,0.3,0.3,1};
         name = "No LOS";
         scope = 2;
     };

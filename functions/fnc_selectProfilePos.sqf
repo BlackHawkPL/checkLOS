@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-if (GVAR(profileRunning)) exitWith {};
+if (GVAR(profileRunning) || {!GVAR(profileEnabled)}) exitWith {};
 
 call FUNC(closeChart);
 

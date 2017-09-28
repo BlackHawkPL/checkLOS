@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-if (GVAR(running)) exitWith {};
+if (GVAR(running) || {!GVAR(enabled)}) exitWith {};
 
 //we will wipe array just in case this isn't really first generation, but previous one was cancelled early
 if (GVAR(firstGeneration)) then {
