@@ -7,6 +7,8 @@ GVAR(IDD) = 12;
 GVAR(aborted) = false;
 GVAR(generating) = false;
 
+GVAR(vehiclesWithFBCB2) = ["M2A", "M1A", "M1025", "M998", "M6"];
+
 GVAR(mouseMovingEH_ID) = nil;
 GVAR(drawEH_ID) = nil;
 GVAR(keyDownEH_ID) = nil;

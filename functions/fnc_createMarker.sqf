@@ -19,6 +19,6 @@ else {
 
 _marker setMarkerBrushLocal _brush;
 _marker setMarkerPosLocal _pos;
-_marker setMarkerAlphaLocal 0 max (0.7 - _alpha / 2);
+_marker setMarkerAlphaLocal _alpha;
 _marker setMarkerColorLocal _color;
 _marker setMarkerSizeLocal [GVAR(cellSize)/2,GVAR(cellSize)/2];

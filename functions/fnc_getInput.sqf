@@ -7,6 +7,8 @@ if (GVAR(firstGeneration)) then {
     call FUNC(removeMarkers);
 };
 
+GVAR(executeFromDraw) = [];
+
 GVAR(running) = true;
 GVAR(aborted) = false;
 
@@ -55,6 +57,11 @@ GVAR(drawEH_ID) = (findDisplay GVAR(IDD) displayCtrl 51) ctrlAddEventHandler ["D
         };
         
         _this select 0 drawArrow [GVAR(sourcePos), _targetPos, [0,0,1,0.6]];
+    };
+    
+    if (count GVAR(executeFromDraw) != 0) then {
+        (GVAR(executeFromDraw) select 1) call (GVAR(executeFromDraw) select 0);
+        GVAR(executeFromDraw) = [];
     };
 }];
 

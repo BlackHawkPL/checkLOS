@@ -10,17 +10,20 @@
 <br/>\
 <execute expression='call %2'>Remove Terrain Profile chart</execute></font>"
 
-#define STR_DISABLED "Option has been disabled"
+#define STR_DISABLED "Option is currently unavailable. Check Information tab for potential causes."
 
 #define STR_DIARY_SUBJECT "LOS checker"
 
 #define STR_DIARY_USER_INSTR "<font size='18'>Important information</font><br/>\
+*LOS Tool is available only in:<br/>\
+    - briefing<br/>\
+    - vehicles equipped with devices capable of performing this function in<br/>\
+      real life (M1 Abrams, M2 Bradley, HMMWV's front seat)<br/>\
+    - in-game if mission maker configured mission to allow for this<br/>\
 *Access settings in 'Options'->'Addon Settings'<br/>\
-*LOS Tool's resolution scales with size of area. Make area smaller for better quality.<br/>\
-*Areas colored <font color='#FF4444'>red</font> are areas that are not obstructed by terrain shape, but are <font color='#FF4444'>obstruced by an object</font><br/>\
-*Areas in a shade between red and blue are obstructed partially<br/>\
-*Areas with no color are completely obstructed by terrain<br/>\
-*The more transparent area, the taller target has to be to be seen<br/>\
+*LOS Tool's resolution scales with size of area. Make area smaller for better quality<br/>\
+*Areas colored <font color='#FF4444'>red</font> are areas <font color='#FF4444'>obscured</font> by terrain<br/>\
+*Areas colored <font color='#4444FF'>blue</font> are <font color='#4444FF'>not obscured</font> by terrain, but might be obscured by objects or vegetation<br/>\
 <br/>\
 <font size='18'>LOS checker</font><br/>\
 1. In 'Check LOS Tool' section click orange 'Check LOS' link<br/>\

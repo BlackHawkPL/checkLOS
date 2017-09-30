@@ -1,11 +1,5 @@
 #include "script_component.hpp"
 
-//draw next to source pos
-//add x for closing
-//to scale
-
-//reset arrow shape when removing eh
-
 (findDisplay GVAR(IDD) displayCtrl 51) ctrlRemoveEventHandler ["Draw", GVAR(profileTempDrawEH_ID)];
 
 GVAR(chartDrawn) = true;

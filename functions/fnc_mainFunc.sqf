@@ -26,43 +26,13 @@ private _func = {
         //["FW_LOS_marker_" + str _index, _cellPos, 1, "colorGrey", _index] call FUNC(createMarker);
     };
     
-    private _addedMarker = false;
-    for "_j" from GVAR(targetMinHeight) to GVAR(targetMaxHeight) step 0.1 do {
-        _cellPos set [2, _j];
-        if (!terrainIntersect [GVAR(sourcePos), _cellPos]) exitWith {
-            private _color = QGVAR(colorObstructed);
-            if (!lineIntersects [ATLtoASL GVAR(sourcePos), ATLtoASL _cellPos]) then {
-                _color = QGVAR(colorVisible);
-            }
-            else {
-                private _counter = 0;
-                private _source = ATLtoASL GVAR(sourcePos);
-                private _dir = (_source getDir _cellPos) + 90;
-                
-                private _newCellPos = ATLtoASL (_cellPos getPos [GVAR(cellSize) / 4, _dir]);
-                if (!lineIntersects [_source, _newCellPos]) then {_counter = _counter + 1;};
-                _newCellPos = ATLtoASL (_cellPos getPos [GVAR(cellSize) / 2, _dir]);
-                if (!lineIntersects [_source, _newCellPos]) then {_counter = _counter + 1;};
-                _newCellPos = ATLtoASL (_cellPos getPos [- GVAR(cellSize) / 2, _dir]);
-                if (!lineIntersects [_source, _newCellPos]) then {_counter = _counter + 1;};
-                _newCellPos = ATLtoASL (_cellPos getPos [- GVAR(cellSize) / 4, _dir]);
-                if (!lineIntersects [_source, _newCellPos]) then {_counter = _counter + 1;};
-                
-                if (_counter > 0) then {
-                    _color = QGVAR(colorObstructedPartially) + str (4 min (_counter * 2));
-                };
-            };
-            
-            _addedMarker = true;
-            private _index = round (_maxSize * _size + _i) + 1;
-            
-            ["FW_LOS_marker_" + str _index, _cellPos, _j / GVAR(targetMaxHeight), _color, _index] call FUNC(createMarker);
-        };
-        
+    if (!terrainIntersect [GVAR(sourcePos), _cellPos]) exitWith {
+        private _index = round (_maxSize * _size + _i) + 1;
+        ["FW_LOS_marker_" + str _index, _cellPos, 0.15, QGVAR(colorVisible), _index] call FUNC(createMarker);
     };
-    if (_addedMarker) exitWith {};
+
     private _index = round (_maxSize * _size + _i) + 1;
-    ["FW_LOS_marker_" + str _index, _cellPos, 0, QGVAR(colorNotVisible), _index, "FDiagonal"] call FUNC(createMarker);
+    ["FW_LOS_marker_" + str _index, _cellPos, 0.8, QGVAR(colorObstructed), _index, "DiagGrid"] call FUNC(createMarker);
 };
 
 private _recFunc = {
@@ -80,7 +50,6 @@ private _recFunc = {
     _size = _size + 1;
     if (_size < _maxSize && !GVAR(aborted)) then {
         _this set [0, (_this select 0) + 1];
-        hint format ["%1%2 done", ceil (100 * _size / _maxSize), '%'];
 
         [_recFuncRef, _this] call FUNC(wrapper);
     }
@@ -98,7 +67,7 @@ private _recFunc = {
         GVAR(generating) = false;
         GVAR(running) = false;
         
-        hint format [STR_FINISHED_MESSAGE, GVAR(cellCount), ROUND_2D(GVAR(cellSize)), ROUND_2D(diag_tickTime - GVAR(timeStart))];
+        //hint format [STR_FINISHED_MESSAGE, GVAR(cellCount), ROUND_2D(GVAR(cellSize)), ROUND_2D(diag_tickTime - GVAR(timeStart))];
         if (isMultiplayer && !isServer && GVAR(telemetryEnabled)) then {
             [(count GVAR(markers)) - 1, GVAR(targetSize), GVAR(cellSize), (diag_tickTime - GVAR(timeStart)), name player] call GVAR(telemetry);
         };

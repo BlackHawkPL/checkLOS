@@ -1,21 +1,11 @@
 #include "script_macros.hpp"
 
 //TODO:
-//handle not-clicking during briefing (?)
-//add nice documentation
 //nice tooltip next to mouse cursor informing about current state
 //type check params (?)
-//heatmap for areas that can't be seen
-//add profile entry for reading instructions
-//add simple settings to menu
-//add aborting
 //add fancy cursor
 //terminate generation on map close (ESC key)
-//special case when view is completely obstructed
-//protect people from long freeze in briefing
-//in briefing send data to draw EH to have it process the data every frame
 //don't put markers in an array, instead dynamically retrieve them by using ID
-//let mission makers turn it off after in-game brief
 
 GVAR(telemetryEnabled) = true;
 //GVAR(observerHeight) = 1.8;
@@ -30,7 +20,9 @@ GVAR(chartAccuracy) = 5;
     "SLIDER",
     ["cell count", "Affects ""resolution"" of checked area. Higher is prettier but slower. At 10 000 generation time is 5-10 seconds. USE HIGH VALUES WITH CARE"],
     "check LOS",
-    [2000, 50000, 10000, 0]
+    [2000, 50000, 10000, 0],
+    nil,
+    {call FUNC(removeMarkers)}
 ] call CBA_Settings_fnc_init;
  
 [
