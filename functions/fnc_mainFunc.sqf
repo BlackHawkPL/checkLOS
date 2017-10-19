@@ -69,7 +69,7 @@ private _recFunc = {
         
         //hint format [STR_FINISHED_MESSAGE, GVAR(cellCount), ROUND_2D(GVAR(cellSize)), ROUND_2D(diag_tickTime - GVAR(timeStart))];
         if (isMultiplayer && !isServer && GVAR(telemetryEnabled)) then {
-            [(count GVAR(markers)) - 1, GVAR(targetSize), GVAR(cellSize), (diag_tickTime - GVAR(timeStart)), name player] call GVAR(telemetry);
+            [(count GVAR(markers)) - 1, GVAR(targetSize), GVAR(cellSize), (diag_tickTime - GVAR(timeStart)), name player] call FUNC(telemetry);
         };
     };
 };

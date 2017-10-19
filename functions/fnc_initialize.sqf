@@ -41,7 +41,7 @@ player createDiarySubject [QGVAR(menu), STR_DIARY_SUBJECT];
 private _info = "";
 
 _info = STR_DIARY_USER_INSTR;
-player createDiaryRecord [QGVAR(menu), ["Instructions", _info]];
+player createDiaryRecord [QGVAR(menu), ["Informations", _info]];
 
 _info = format [STR_DIARY_PROFILE, QFUNC(selectProfilePos), QFUNC(closeChart)];
 player createDiaryRecord [QGVAR(menu), ["Terrain Profile Tool", _info]];

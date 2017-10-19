@@ -9,8 +9,7 @@
 
 GVAR(telemetryEnabled) = true;
 //GVAR(observerHeight) = 1.8;
-GVAR(targetMinHeight) = 0.3;
-GVAR(targetMaxHeight) = 1.8;
+GVAR(targetMinHeight) = 1.0;
 //GVAR(cellCount) = 10000;
 GVAR(disableAfterStart) = true;
 GVAR(chartAccuracy) = 5;

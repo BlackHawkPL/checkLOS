@@ -10,7 +10,7 @@ if (!isNull (findDisplay GVAR(IDD)) && !isNil QGVAR(drawEH_ID)) then {
 
 if ((count GVAR(markers)) != 0) then {
     {
-        deleteMarker _x;
+        deleteMarkerLocal _x;
     } forEach GVAR(markers);
 };
 GVAR(markers) resize 0;
