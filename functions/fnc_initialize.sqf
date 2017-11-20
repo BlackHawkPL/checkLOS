@@ -20,6 +20,11 @@ GVAR(profileStartPos) = [];
 GVAR(profileEndPos) = [];
 GVAR(profileRunning) = false;
 
+//heatmap vars
+GVAR(heatmapRunning) = false;
+GVAR(heatmapMarkers) = [];
+
+
 call FUNC(determineEnvironment);
 
 [{time > 0}, {
@@ -35,6 +40,7 @@ call FUNC(determineEnvironment);
     if (isMultiplayer && GVAR(disableAfterStart)) then {
         call FUNC(disable);
     };
+    call FUNC(removeHeatmap);
 }] call CBA_fnc_WaitUntilAndExecute;
 
 player createDiarySubject [QGVAR(menu), STR_DIARY_SUBJECT];
@@ -45,6 +51,9 @@ player createDiaryRecord [QGVAR(menu), ["Informations", _info]];
 
 _info = format [STR_DIARY_PROFILE, QFUNC(selectProfilePos), QFUNC(closeChart)];
 player createDiaryRecord [QGVAR(menu), ["Terrain Profile Tool", _info]];
+
+_info = format [STR_DIARY_HEATMAP, QFUNC(selectHeatmapPos), QFUNC(removeHeatmap)];
+player createDiaryRecord [QGVAR(menu), ["Terrain Height Heatmap Tool", _info]];
 
 _info = format [STR_DIARY_LOS, QFUNC(getInput), QFUNC(removeMarkers)];
 player createDiaryRecord [QGVAR(menu), ["Check LOS Tool", _info]];

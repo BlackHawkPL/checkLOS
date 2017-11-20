@@ -15,6 +15,19 @@ How to use it:<br/>\
 <br/>\
 You can abort generation at any time by pressing A on your keyboard."
 
+#define STR_DIARY_HEATMAP "<font size='18'><execute expression='call %1'>Draw Heatmap</execute><br/>\
+<br/>\
+<execute expression='call %2'>Remove Heatmap</execute></font><br/>\
+<br/>\
+This tool generates smooth gradient heatmap representing terrain elevation. Dark green and dark red colors respectively represent lowest and highest elevation in selected area.<br/>\
+Primary use of this tool is to help analyze terrain shape. For precise measurement of terrain elevation use Terrain Profile tool.<br/>\
+<br/>\
+How to use it:<br/>\
+1. Click orange 'Draw Heatmap' text<br/>\
+2. On map, click position where left bottom corner of heatmap will be at<br/>\
+3. Move you mouse and click where you want right upper corner to be<br/>\
+4. Wait for script to finish. Your game might appear frozen for a couple of seconds"
+
 #define STR_DIARY_PROFILE "<font size='18'><execute expression='call %1'>Draw Terrain Profile</execute><br/>\
 <br/>\
 <execute expression='call %2'>Remove Terrain Profile chart</execute></font><br/>\

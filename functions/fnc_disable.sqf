@@ -35,3 +35,4 @@ FUNC(getInput) = {
 };
 
 FUNC(selectProfilePos) = {hint STR_DISABLED;};
+FUNC(selectHeatmapPos) = {hint STR_DISABLED;};

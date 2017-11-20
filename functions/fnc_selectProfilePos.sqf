@@ -6,6 +6,8 @@ call FUNC(closeChart);
 
 GVAR(profileRunning) = true;
 
+call FUNC(determineEnvironment);
+
 GVAR(overDialog) = false;
 GVAR(overBox) = false;
 GVAR(leftBottom) = [];
